@@ -1,7 +1,7 @@
 # Rutas
 
 ## URL DEL DESPLIEGUE
-- - https://airbnb-clon.onrender.com/
+- - https://airbnb-clone-50v3.onrender.com
 
 - /api/v1/users
 - /api/v1/users/:id
