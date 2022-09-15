@@ -1,0 +1,628 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API Rest Clon de Airbnb",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/users": {
+            "get": {
+                "description": "Get all users",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "We get all users succesfully"
+                    },
+                    "400": {
+                        "description": "Generate an error "
+                    }
+                }
+            }
+        },
+        "api/v1/users/me": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Get the logged user",
+                "tags": [
+                    "Users/me"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get logge user succesfully"
+                    },
+                    "400": {
+                        "description": "Generate an error"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "trype": "string"
+                    }
+                ],
+                "description": "Eliminar un usuario en especofico",
+                "tags": [
+                    "Users/me"
+                ],
+                "responeses": {
+                    "204": {
+                        "description": "Eliminaremos exitosamente el usurio"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "trype": "string"
+                    }
+                ],
+                "description": "Editar un usuario",
+                "tags": [
+                    "Users/me"
+                ],
+                "responeses": {
+                    "204": {
+                        "description": "Editaremos exitosamente el usurio"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva y explicaremos el motivo"
+                    }
+                }
+            }
+        },
+        "api/v1/users/me/profile-img": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image path",
+                        "in": "path",
+                        "description": "path de la imagen",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener la imagen de un usuario en especifico",
+                "tags": [
+                    "Users/me"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtener exitosamente la imagen del usuario"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener un usuario en especifico",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtenemos exitosamente el usuario deseado "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "trype": "string"
+                    }
+                ],
+                "description": "Eliminar un usuario en especofico",
+                "tags": [
+                    "Users"
+                ],
+                "responeses": {
+                    "204": {
+                        "description": "Eliminaremos exitosamente el usurio"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "trype": "string"
+                    }
+                ],
+                "description": "Editar un usuario",
+                "tags": [
+                    "Users"
+                ],
+                "responeses": {
+                    "204": {
+                        "description": "Editaremos exitosamente el usurio"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva y explicaremos el motivo"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/role": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener el rol de un usuario",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtenemos exitosamente el rol del usuario deseado "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "email del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "password del usuario",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Loggear un usuario",
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Loggeamos exitosamente al usuario"
+                    },
+                    "401": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva y explicamos el motivo"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/register": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "path",
+                        "description": "Nombre del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Apellido del usuario",
+                        "required": true,
+                        "type": [{
+                            "id": 0,
+                            "username": "string",
+                            "firstName": "string",
+                            "lastName": "string",
+                            "email": "string",
+                            "password": "string",
+                            "phone": "string",
+                            "userStatus": 0
+                          }]
+                    },
+                    {
+                        "name": "gender",
+                        "in": "path",
+                        "description": "genero del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "email del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "password del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "path",
+                        "description": "phone del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "birthdayDate",
+                        "in": "path",
+                        "description": "Cumpleaños del usuario",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Crear un usuario",
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Creamos exitosamente al usuario"
+                    },
+                    "401": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva y explicamos el motivo"
+                    }
+                }
+            }
+        },
+        "api/v1/accommodations/": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener al usuario loggeado",
+                "tags": [
+                    "accomodation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtener exitosamente el usuario"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "api/v1/accommodations/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener la locacion en especifico",
+                "tags": [
+                    "accomodation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtener exitosamente la locacione"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "/api/v1/accommodations/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la locacion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener una locacion en especifico",
+                "tags": [
+                    "accomodation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtenemos exitosamente la locacion deseado "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "/api/v1/accommodations/{id}/make-reservation": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "in": "path",
+                        "description": "Data de la locacion",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accommodation ID",
+                        "in": "path",
+                        "description": "ID de la locacion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener una locacion en especifico",
+                "tags": [
+                    "accomodation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtenemos exitosamente la locacion deseado "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "/api/v1/accommodations/{placeId}/make-accommodation": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del usuario",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "in": "path",
+                        "description": "Data de la locacion",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "accommodation ID",
+                        "in": "path",
+                        "description": "ID de la locacion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener una locacion en especifico",
+                "tags": [
+                    "accomodation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtenemos exitosamente la locacion deseado "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "api/v1/reservations/": {
+            "get": {
+                "description": "Obtener las reservaciones del usuario",
+                "tags": [
+                    "reservation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtener exitosamente las reservaciones del usuario"
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        },
+        "/api/v1/reservation/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la reservacion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Obtener una reservacion en especifico",
+                "tags": [
+                    "reservation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtenemos exitosamente la reservacion deseada "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la reservacion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "description": "Eliminar una reservacion en especifico",
+                "tags": [
+                    "reservation"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Eliminamos exitosamente la reservacion deseada "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la reservacion",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "path",
+                        "description": "nombre de la reservacion",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "path",
+                        "description": "Descripcion de la reservacion",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "guests",
+                        "in": "path",
+                        "description": "Personas de la reservacion",
+                        "required": true,
+                        "type": "int"
+                    },
+                    {
+                        "name": "rooms",
+                        "in": "path",
+                        "description": "Habitaciones en la reservacion",
+                        "required": true,
+                        "type": "int"
+                    },
+                    {
+                        "name": "beds",
+                        "in": "path",
+                        "description": "ID de la reservacion",
+                        "required": true,
+                        "type": "int"
+                    },
+                    {
+                        "name": "bathrooms",
+                        "in": "path",
+                        "description": "Baños en la reservacion",
+                        "required": true,
+                        "type": "decimal"
+                    },
+                    {
+                        "name": "price",
+                        "in": "path",
+                        "description": "precio por noche de la reservacion",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "commision",
+                        "in": "path",
+                        "description": "Comsion de la reservacion",
+                        "required": true,
+                        "type": "decimal"
+                    }
+                ],
+                "description": "Eliminar una reservacion en especifico",
+                "tags": [
+                    "reservation"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Eliminamos exitosamente la reservacion deseada "
+                    },
+                    "400": {
+                        "description": "Generamos un error en caso de que la peticion no se resuelva"
+                    }
+                }
+            }
+        }
+    }
+}
